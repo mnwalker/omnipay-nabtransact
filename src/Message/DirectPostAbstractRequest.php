@@ -70,8 +70,8 @@ abstract class DirectPostAbstractRequest extends AbstractRequest
         }
 
         $card = $this->getCard();
-        
-        if($card){ //UnionPay doesn't have card option
+  
+        if ($card){ //UnionPay doesn't have card option
             if ($billingPostcode = $card->getBillingPostcode()) {
                 $data['EPS_ZIPCODE'] = $billingPostcode;
             }
@@ -79,20 +79,20 @@ abstract class DirectPostAbstractRequest extends AbstractRequest
             if ($billingCity = $card->getBillingCity()) {
                 $data['EPS_TOWN'] = $billingCity;
             }
-    
+
             if ($billingCountry = $card->getBillingCountry()) {
                 $data['EPS_BILLINGCOUNTRY'] = $billingCountry;
             }
-    
+
             if ($shippingCountry = $card->getShippingCountry()) {
                 $data['EPS_DELIVERYCOUNTRY'] = $shippingCountry;
             }
-    
+
             if ($emailAddress = $card->getEmail()) {
                 $data['EPS_EMAILADDRESS'] = $emailAddress;
             }
         }
-        
+
         if ($this->getHasEMV3DSEnabled()) {
             $data['EPS_ORDERID'] = $this->getTransactionReference();
 
