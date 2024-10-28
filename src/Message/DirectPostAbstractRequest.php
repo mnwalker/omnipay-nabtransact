@@ -70,7 +70,7 @@ abstract class DirectPostAbstractRequest extends AbstractRequest
         }
 
         $card = $this->getCard();
-  
+
         if ($card) { //UnionPay doesn't have card option
             if ($billingPostcode = $card->getBillingPostcode()) {
                 $data['EPS_ZIPCODE'] = $billingPostcode;
